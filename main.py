@@ -20,12 +20,12 @@ async def chat(
     if not validator.validate(
         str(request.url), 
         form_, 
-        request.headers.get("X-Twilio-Signature", "")
+        request.headers.get('X-TWILIO-SIGNATURE', '')
     ):
         raise HTTPException(status_code=400, detail="Error in Twilio Signature")
 
     response = MessagingResponse()
-    msg = response.message(f"Hi {From}, you said: {Body}")
+    # msg = response.message(f"Hi {From}, you said: {Body}")
     # establish connections
     engine = create_engine("postgresql+psycopg2://" + os.environ["DB_USER"] + ":" + os.environ["DB_PASSWORD"]\
                            + "@" + os.environ["DB_HOST"]\
